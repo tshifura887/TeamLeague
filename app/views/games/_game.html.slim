@@ -1,0 +1,16 @@
+p
+    = game.team_1.team_name
+
+p
+    = game.team_2.team_name
+
+p
+    = game.team_1_score
+
+p
+    = game.team_2_score
+
+
+= link_to 'Edit Game', edit_game_path(game, team_id:@team.id)
+'|
+= link_to  'Delete game', game_path(game), method: :delete

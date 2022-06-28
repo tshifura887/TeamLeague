@@ -1,0 +1,24 @@
+h1 Games 
+
+table 
+    thead 
+        tr 
+            th Team 1
+            th Team 2
+            th Team 1 Score
+            th Team 2 Score
+            th 
+            th 
+    tbody 
+        - @games.each do |game|
+            tr
+                td = game.team_1.team_name
+                td = game.team_2.team_name
+                td = game.team_1_score
+                td = game.team_2_score
+                td = link_to 'Edit', edit_game_path(@game)
+
+
+=> link_to 'Add a new game', new_game_path(@team)
+'|
+= link_to 'Teams', teams_path

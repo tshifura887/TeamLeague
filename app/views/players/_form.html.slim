@@ -1,0 +1,21 @@
+= form_with model:[team, player] do |form|
+    div
+        p
+            = form.label :first_name
+            br
+            = form.text_field :first_name
+        p
+            = form.label :last_name
+            br
+            = form.text_field :last_name
+        p 
+           = form.label :age
+           br
+           = form.number_field :age
+
+        ul
+            - player.errors.full_messages_for(:player_name).each do |error|
+                li
+                    = error
+    div
+        = form.submit 'Submit'

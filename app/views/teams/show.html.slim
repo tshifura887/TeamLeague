@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Team Name:
+  = @team.team_name
+
+h1 Players 
+
+= render @team.players
+= link_to 'Add a new player', new_team_player_path(@team),  class:'btn  btn-md btn-success', role:'button'
+br
+br
+
+=> link_to "Edit", edit_team_path(@team)
+'|
+=> link_to "Back", teams_path
+'|
+= link_to 'Delete team', team_path(@team), method: :delete

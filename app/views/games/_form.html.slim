@@ -1,0 +1,23 @@
+= form_with model: game do |form|
+    p
+        = form.label :team_1_id
+        br
+        = form.select :team_1_id , Team.pluck(:team_name, :id)
+
+    p
+        = form.label :team_2_id
+        br
+        = form.select :team_2_id , Team.pluck(:team_name, :id)
+
+    p
+        = form.label :team_1_score
+        br
+        = form.number_field :team_1_score
+
+    p
+        = form.label :team_2_score
+        br
+        = form.number_field :team_2_score
+   
+    p
+        = form.submit
