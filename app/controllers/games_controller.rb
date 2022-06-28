@@ -5,6 +5,10 @@ class GamesController < ApplicationController
         @games = Game.all
     end
 
+    def show
+        @game = Game.find(params[:id])
+    end
+
     def new
         @game = Game.new(team_1_id: params[:team_id])
     end
@@ -20,7 +24,7 @@ class GamesController < ApplicationController
     end
 
     def edit
-        
+    
     end
 
     def update

@@ -16,8 +16,7 @@ table
                 td = game.team_2.team_name
                 td = game.team_1_score
                 td = game.team_2_score
-                td = link_to 'Edit', edit_game_path(@game)
-
+                td = link_to "Destroy", game, data: {confirm: "Are you sure?"}, method: :delete
 
 => link_to 'Add a new game', new_game_path(@team)
 '|
