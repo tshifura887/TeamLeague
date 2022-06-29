@@ -6,7 +6,7 @@ class TournamentsController < ApplicationController
     end
   
     def show 
-        # @games = @tournament.games
+        @tournament = Tournament.find(params[:id])
     end
   
     def new
@@ -15,7 +15,7 @@ class TournamentsController < ApplicationController
 
     def create
         @tournament = Tournament.new(tournament_params)
-    
+        authorize @tournament
         if @tournament.save
             redirect_to @tournament
         else
@@ -24,6 +24,7 @@ class TournamentsController < ApplicationController
     end
 
     def update
+        authorize @tournament
         if @tournament.update(tournament_params)
           redirect_to @tournament
         else
@@ -32,9 +33,10 @@ class TournamentsController < ApplicationController
     end
       
     def destroy
+        authorize @tournament
         @tournament.destroy
         redirect_to tournaments_path
-      end
+    end
       
     private
 

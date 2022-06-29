@@ -8,7 +8,7 @@ class PlayersController < ApplicationController
 
     def create
         @player = @team.players.new(player_params)
-
+        authorize @player
         if @player.save
             redirect_to @team
         else
@@ -20,6 +20,7 @@ class PlayersController < ApplicationController
     end
 
     def update
+        authorize @player
         if @player.update(player_params)
             redirect_to @team
         else
@@ -28,6 +29,7 @@ class PlayersController < ApplicationController
     end
   
     def destroy 
+        authorize @player
         @player.destroy
         redirect_to @team
     end

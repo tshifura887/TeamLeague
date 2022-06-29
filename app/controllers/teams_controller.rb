@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: %i[ show edit update destroy ]
 
+
   def index
     @teams = Team.all
   end
@@ -18,7 +19,7 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
-
+    authorize @team
     if @team.save
       redirect_to team_url(@team), notice: "Team was successfully created." 
     else
@@ -27,6 +28,7 @@ class TeamsController < ApplicationController
   end
 
   def update
+    authorize @team
     if @team.update(team_params)
       redirect_to team_url(@team), notice: "Team was successfully updated." 
     else
@@ -36,6 +38,7 @@ class TeamsController < ApplicationController
 
   def destroy
     Game.where(team_1_id:@team.id).or(Game.where(team_2_id:@team.id)).destroy_all
+    authorize @team
     @team.destroy
     redirect_to teams_url, notice: "Team was successfully destroyed." 
   end
@@ -46,6 +49,6 @@ class TeamsController < ApplicationController
     end
 
     def team_params
-      params.require(:team).permit(:team_name)
+      params.require(:team).permit(:team_name,  :tournament_id)
     end
 end

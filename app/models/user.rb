@@ -4,10 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   def manager?
-    type == 'User::Manager'
+    role == 'User::Manager'
   end
 
   def coordinator?
-    type == 'User::Coordinator'
+    role == 'User::Coordinator'
   end
 end

@@ -15,7 +15,7 @@ class GamesController < ApplicationController
 
     def create
         @game = Game.new(game_params)
-
+        authorize @game
         if @game.save
             redirect_to games_path
        else 
@@ -29,6 +29,7 @@ class GamesController < ApplicationController
 
     def update
         @team = params[:team_id]
+        authorize @game
         if @game.update(game_params)
             redirect_to @game.team_1
         else
@@ -37,6 +38,7 @@ class GamesController < ApplicationController
     end
 
     def destroy
+        authorize @game
         @game.destroy
         redirect_to games_path(@game)
     end

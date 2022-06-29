@@ -9,4 +9,8 @@
   .field
     = f.label :team_name
     = f.text_field :team_name
+  .field
+    = f.label :tournament_id
+      br
+    = f.select :tournament_id, Tournament.pluck(:title, :id)
   .actions = f.submit

@@ -7,8 +7,9 @@ table
             th Team 2
             th Team 1 Score
             th Team 2 Score
-            th 
-            th 
+            th Team 1 Game Points
+            th Team 2 Game Points
+            th
     tbody 
         - @games.each do |game|
             tr
@@ -16,8 +17,12 @@ table
                 td = game.team_2.team_name
                 td = game.team_1_score
                 td = game.team_2_score
+                td = game.team_1_points
+                td = game.team_2_points
                 td = link_to "Destroy", game, data: {confirm: "Are you sure?"}, method: :delete
 
 => link_to 'Add a new game', new_game_path(@team)
 '|
-= link_to 'Teams', teams_path
+=> link_to 'Teams', teams_path
+'|
+= link_to 'Tournaments', tournaments_path

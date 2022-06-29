@@ -1,0 +1,22 @@
+h1 #{ @tournament.title } teams
+
+table 
+    thead 
+        tr 
+            th Team Name 
+            th Points
+    tbody 
+        - @tournament.teams.each do |team|
+            tr  
+                td = link_to team.team_name, team_path(team)
+                td = team.total_points
+                
+=> link_to "Edit", edit_tournament_path(@tournament)
+'|
+=> link_to "Back", tournaments_path
+'|
+=> link_to 'Delete Tournament', tournament_path(@tournament), method: :delete
+'|
+=> link_to 'Games', games_path
+'|
+= link_to 'Teams', teams_path

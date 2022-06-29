@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_28_102643) do
+ActiveRecord::Schema.define(version: 2022_06_28_143135) do
 
   create_table "games", force: :cascade do |t|
     t.integer "team_1_score"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2022_06_28_102643) do
     t.string "team_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "tournament_id"
+    t.index ["tournament_id"], name: "index_teams_on_tournament_id"
   end
 
   create_table "tournaments", force: :cascade do |t|
@@ -52,7 +54,7 @@ ActiveRecord::Schema.define(version: 2022_06_28_102643) do
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "type"
+    t.string "role"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -68,4 +70,5 @@ ActiveRecord::Schema.define(version: 2022_06_28_102643) do
   add_foreign_key "games", "teams", column: "team_2_id"
   add_foreign_key "games", "tournaments"
   add_foreign_key "players", "teams"
+  add_foreign_key "teams", "tournaments"
 end
