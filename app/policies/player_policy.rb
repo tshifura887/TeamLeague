@@ -8,14 +8,14 @@ class PlayerPolicy < ApplicationPolicy
     end
   
     def create?
-      current_user.manager?
+      current_user.coordinator?
     end
   
     def update?
-      current_user.manager?
+      current_user.coordinator?
     end
   
     def destroy?
-      current_user.manager?
+      current_user.coordinator?
     end
   end

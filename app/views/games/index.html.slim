@@ -1,6 +1,6 @@
 h1 Games 
 
-table 
+table class="table table-striped table-hover"
     thead 
         tr 
             th Team 1
@@ -21,8 +21,4 @@ table
                 td = game.team_2_points
                 td = link_to "Destroy", game, data: {confirm: "Are you sure?"}, method: :delete
 
-=> link_to 'Add a new game', new_game_path(@team)
-'|
-=> link_to 'Teams', teams_path
-'|
-= link_to 'Tournaments', tournaments_path
+= link_to 'Add a new game', new_game_path(@team)
