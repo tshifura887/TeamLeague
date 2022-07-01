@@ -3,6 +3,8 @@ class GamesController < ApplicationController
 
     def index
         @games = Game.all
+        points_service = PointsService.new
+        @points = points_service.call
     end
 
     def show
@@ -28,10 +30,10 @@ class GamesController < ApplicationController
     end
 
     def update
-        @team = params[:team_id]
+        
         authorize @game
         if @game.update(game_params)
-            redirect_to @game.team_1
+            redirect_to games_path
         else
             render :edit, status: :unprocessable_entity
         end
@@ -49,6 +51,6 @@ class GamesController < ApplicationController
     end
 
     def game_params
-        params.require(:game).permit(:team_1_id , :team_2_id, :team_1_score, :team_2_score)
+        params.require(:game).permit(:team_1_id , :team_2_id, :team_1_score, :team_2_score, :tournament_id)
     end
 end

@@ -1,8 +1,9 @@
 = form_with model: tournament do |form|
     div
         = form.label :title
-        br
         = form.text_field :title
-    br
     div 
+        = form.label :number_of_teams
+        = form.number_field :number_of_teams
+    div
         = form.submit 'Submit'

@@ -4,5 +4,5 @@ ul
   - @teams.each do |team|
     li = link_to team.team_name, team_path(team)
 br
-
-= link_to "New Team", new_team_path
+- if current_user && current_user.manager?
+  = link_to "New Team", new_team_path

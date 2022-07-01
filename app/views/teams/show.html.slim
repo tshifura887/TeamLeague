@@ -5,14 +5,15 @@ p
   = @team.team_name
 
 h1 Players 
+div 
+  = render @team.players
+  - if current_user && current_user.coordinator?
+    = link_to 'Add a new player', new_team_player_path(@team)
 
-= render @team.players
-= link_to 'Add a new player', new_team_player_path(@team)
-br
-br
-
-=> link_to "Edit", edit_team_path(@team)
-'|
-=> link_to "Back", teams_path
-'|
-= link_to 'Delete team', team_path(@team), method: :delete
+div
+  - if current_user && current_user.manager?
+    => link_to "Edit", edit_team_path(@team)
+    '|
+    => link_to "Back", teams_path
+    '|
+    = link_to 'Delete team', team_path(@team), method: :delete

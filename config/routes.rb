@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :players
   end
   
-  resources :games
+  resources :games do
+    get 'points', on: :member
+  end
   resources :tournaments
 end

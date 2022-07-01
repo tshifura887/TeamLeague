@@ -1,9 +1,9 @@
 h1 Tournaments
-
 ul 
-    - @tournaments.each do |tournament|
-        li
-            = link_to tournament.title, tournament_path(tournament)
+  - @tournaments.each do |tournament|
+    li
+      = link_to tournament.title, tournament_path(tournament)
 
-= link_to 'New Tournament', new_tournament_path
+- if current_user && current_user.manager?
+  = link_to 'New Tournament', new_tournament_path
 

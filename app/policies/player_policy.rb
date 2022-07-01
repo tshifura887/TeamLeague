@@ -1,7 +1,7 @@
 class PlayerPolicy < ApplicationPolicy
     attr_reader :current_user, :player
   
-    def initialize(current_user, team)
+    def initialize(current_user, player)
       raise Pundit::NotAuthorizedError, "must be logged in" unless current_user
       @current_user = current_user
       @player = player

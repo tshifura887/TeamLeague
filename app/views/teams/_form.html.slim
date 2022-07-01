@@ -1,16 +1,5 @@
 = form_for @team do |f|
-  - if @team.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@team.errors.count, "error")} prohibited this team from being saved:"
-      ul
-        - @team.errors.full_messages.each do |message|
-          li = message
+  div class="form-group"
+    = f.text_field :team_name, class:'form-control', placeholder: "Team Name"
+  div = f.submit class: 'btn btn-primary'
 
-  .field
-    = f.label :team_name
-    = f.text_field :team_name
-  .field
-    = f.label :tournament_id
-      br
-    = f.select :tournament_id, Tournament.pluck(:title, :id)
-  .actions = f.submit

@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, :except => [:index]
 
 
   def index
@@ -7,7 +8,6 @@ class TeamsController < ApplicationController
   end
 
   def show
-    
   end
 
   def new
@@ -49,6 +49,6 @@ class TeamsController < ApplicationController
     end
 
     def team_params
-      params.require(:team).permit(:team_name,  :tournament_id)
+      params.require(:team).permit(:team_name)
     end
 end

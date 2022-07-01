@@ -1,33 +1,29 @@
-h2
-  | Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field 
-    = f.label :first_name
-    = f.text_field :first_name
-  .field 
-    = f.label :last_name
-    = f.text_field :last_name
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-    br
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field 
-    = f.label :role
-    = f.select :role, options_for_select([ ['Manager', 'User::Manager'], ['Coordinator', 'User::coordinator'] ])
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+div class="card justify-content-end" style="width: 50rem;"
+  div class="card-header"
+    h2 Sign up
+  div class="card-body"
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      div class="field form-group"
+        = f.text_field :first_name, class:'form-control', placeholder: "First Name"
+      div class="field form-group"
+        = f.text_field :last_name, class:'form-control', placeholder: "Last Name"
+      div class="field form-group"
+        = f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control', placeholder: "Email"
+      div class="field form-group"
+        = f.label :password
+          - if @minimum_password_length
+            em
+              | (
+              = @minimum_password_length
+              |  characters minimum)
+        br
+        = f.password_field :password, autocomplete: "new-password",class:'form-control', placeholder: "Password"
+      div class="field form-group"
+        = f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control', placeholder: "Password Confirmation"
+      div class="field form-group"
+        = f.label :role
+        = f.select :role, options_for_select([ ['Manager', 'User::Manager'], ['Coordinator', 'User::Coordinator'] ])
+      div
+        = f.submit "Sign up", class: 'btn btn-primary'
+    = render "devise/shared/links"
