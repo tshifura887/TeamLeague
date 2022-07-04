@@ -6,8 +6,8 @@ p
 
 h1 Players 
 div 
-  = render @team.players
   - if current_user && current_user.coordinator?
+    = render @team.players
     = link_to 'Add a new player', new_team_player_path(@team)
 
 div
