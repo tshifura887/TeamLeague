@@ -1,10 +1,8 @@
 p#notice = notice
 
-p
-  strong Team Name:
-  = @team.team_name
+h1 #{@team.team_name}
 
-h1 Players 
+h2 Players 
 div 
   - if current_user && current_user.coordinator?
     = render @team.players
@@ -16,4 +14,4 @@ div
     '|
     => link_to "Back", teams_path
     '|
-    = link_to 'Delete team', team_path(@team), method: :delete
+    = link_to 'Delete team', team_path(@team), method: :delete, class:"bi bi-trash"
