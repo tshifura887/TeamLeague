@@ -8,11 +8,11 @@ class GamesController < ApplicationController
     end
 
     def show
-        @game = Game.find(params[:id])
+        # @game = Game.find(params[:id])
     end
 
     def new
-        @game = Game.new(team_1_id: params[:team_id])
+        @game = Game.new()
     end
 
     def create

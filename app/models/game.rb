@@ -4,9 +4,11 @@ class Game < ApplicationRecord
   belongs_to :tournament, optional: true
 
   before_create :assign_points
+  before_update :assign_points
 
   validates :team_1, presence: true
   validates :team_2, presence: true
+  
   private
   def assign_points
     self.team_1_points = 0
